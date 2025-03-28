@@ -45,7 +45,8 @@ function operate(a, operation, b) {
       result = divide(a, b);
       break;
   }
-  return +result.toFixed(2);
+  if(result.toString().length >=11) return result.toExponential(5)
+  //return +result.toFixed(2);
 }
 
 function evaluate(event) {
@@ -70,8 +71,10 @@ function evaluate(event) {
 
 numbersBtns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
-    const num = event.target.textContent;
-    display.textContent += num;
+    if (display.textContent.length < 11) {
+      const num = event.target.textContent;
+      display.textContent += num;
+    }
   });
 });
 
