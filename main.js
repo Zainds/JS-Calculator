@@ -26,6 +26,8 @@ function divide(a, b) {
   return a / b;
 }
 function operate(a, operation, b) {
+  a = Number.parseFloat(a).toFixed(5)
+  b = Number.parseFloat(b).toFixed(5) 
   let result = 0;
   switch (operation) {
     case "+":
@@ -45,8 +47,9 @@ function operate(a, operation, b) {
       result = divide(a, b);
       break;
   }
+  result = +result.toFixed(3)
   if(result.toString().length >=11) return result.toExponential(5)
-  //return +result.toFixed(2);
+  return result
 }
 
 function evaluate(event) {
