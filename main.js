@@ -3,13 +3,11 @@ const display = document.querySelector(".display");
 const numbersBtns = document.querySelectorAll(".num");
 const opeartionBtns = document.querySelectorAll(".operation");
 
+const calcBtn = document.querySelector("#calc");
 const clearBtn = document.querySelector("#ac");
 const eraseBtn = document.querySelector("#backspace");
 const signBtn = document.querySelector("#sign");
 const dotBtn = document.querySelector("#dot");
-
-const numbers = "0123456789";
-const operations = "/*-+";
 
 let number;
 let operation;
@@ -28,30 +26,45 @@ function divide(a, b) {
   return a / b;
 }
 function operate(a, operation, b) {
+  let result = 0;
   switch (operation) {
     case "+":
-      return add(a, b);
+      result = add(a, b);
+      break;
 
     case "-":
-      return substract(a, b);
+      result = substract(a, b);
+      break;
 
     case "*":
-      return multiply(a, b);
+      result = multiply(a, b);
+      break;
 
     case "/":
-      return divide(a, b);
+      if (b == 0) return "wtf";
+      result = divide(a, b);
+      break;
   }
+  return +result.toFixed(2);
 }
+
 function evaluate(event) {
+  const operationClicked = event.target.textContent;
   const displayNum = +display.textContent;
 
-  numberAnother = displayNum;
-  console.log(number, operation, numberAnother);
-  if (number && operation && numberAnother) {
-    display.textContent = operate(number, operation, numberAnother);
-    number = +display.textContent
-    operation = null;
-    numberAnother = null;
+  if (operation) {
+    numberAnother = displayNum;
+    console.log(number, operation, numberAnother);
+    if (number && operation && numberAnother) {
+      display.textContent = operate(number, operation, numberAnother);
+      number = +display.textContent;
+      operation = null;
+      numberAnother = null;
+    }
+  } else {
+    operation = operationClicked;
+    number = displayNum;
+    display.textContent = "";
   }
 }
 
@@ -63,23 +76,10 @@ numbersBtns.forEach((btn) => {
 });
 
 opeartionBtns.forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    const operationClicked = event.target.textContent;
-    const displayNum = +display.textContent;
-
-    if (operationClicked == "=") {
-      evaluate(event)
-    } else {
-      if (operation) {
-        evaluate(event)
-      } else {
-        operation = operationClicked;
-        number = displayNum;
-        display.textContent = "";
-      }
-    }
-  });
+  btn.addEventListener("click", (event) => evaluate(event));
 });
+
+calcBtn.addEventListener("click", (event) => evaluate(event));
 
 clearBtn.addEventListener("click", () => {
   display.textContent = "";
@@ -95,9 +95,22 @@ eraseBtn.addEventListener("click", () => {
   );
 });
 
+signBtn.addEventListener("click", () => {
+  let sign = display.textContent[0];
+  if (sign == "-") {
+    display.textContent = display.textContent.slice(1);
+  } else {
+    display.textContent = "-" + display.textContent;
+  }
+});
 
+dotBtn.addEventListener("click", () => {
+  let txt = display.textContent;
+  if (txt && !txt.includes(".")) {
+    display.textContent += ".";
+  }
+});
 
-function deb(){
-    console.log(number, operation, numberAnother);
-    
+function deb() {
+  console.log(number, operation, numberAnother);
 }

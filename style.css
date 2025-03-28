@@ -56,7 +56,7 @@ button {
 #zero{
     flex-grow: 1;
 }
-.operation{
+.operation, .calc{
     background-color: #FF8F1F;
 }
 .action{
