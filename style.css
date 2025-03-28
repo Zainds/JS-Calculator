@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 html,
 body {
@@ -26,7 +27,7 @@ body {
   background-color: rgb(51, 48, 48);
   border-radius: 15px;
   width: 270px;
-  height: 320px;
+  height: 380px;
   gap: 15px;
 }
 .buttons {
@@ -47,6 +48,12 @@ button {
   border-radius: 5px;
   font-size: 30px;
   border: 3px solid rgb(154, 4, 47);
-  width: 100%;
+  width: 246px;
+  height: 34px;
+  text-align: end;
+  padding: 0 3px;
   
+}
+#clear{
+    flex-grow: 1;
 }
