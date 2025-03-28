@@ -46,19 +46,19 @@ button {
 .display {
   background-color: #b2b9b7;
   border-radius: 5px;
-  font-size: 30px;
+  font-size: 40px;
   width: 246px;
-  height: 34px;
+  height: 38px;
   text-align: end;
-  padding: 0 3px;
+  padding: 2px 3px;
   
 }
 #zero{
     flex-grow: 1;
 }
-#divide, #multiply, #substract, #add, #calc{
+.operation{
     background-color: #FF8F1F;
 }
-#ac, #backspace, #sign{
+.action{
     background-color: dodgerblue;
 }

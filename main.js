@@ -1,7 +1,13 @@
-const buttonsAll = document.querySelector(".buttons");
 const display = document.querySelector(".display");
-const numbersBtns = document.querySelector('.num')
-const opeartionBtns = document.querySelector('#divide, #multiply, #substract, #add, #calc')
+
+const numbersBtns = document.querySelectorAll(".num");
+const opeartionBtns = document.querySelectorAll(".operation");
+
+const clearBtn = document.querySelector("#ac");
+const eraseBtn = document.querySelector("#backspace");
+const signBtn = document.querySelector("#sign");
+const dotBtn = document.querySelector("#dot");
+
 const numbers = "0123456789";
 const operations = "/*-+";
 
@@ -36,4 +42,62 @@ function operate(a, operation, b) {
       return divide(a, b);
   }
 }
+function evaluate(event) {
+  const displayNum = +display.textContent;
 
+  numberAnother = displayNum;
+  console.log(number, operation, numberAnother);
+  if (number && operation && numberAnother) {
+    display.textContent = operate(number, operation, numberAnother);
+    number = +display.textContent
+    operation = null;
+    numberAnother = null;
+  }
+}
+
+numbersBtns.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    const num = event.target.textContent;
+    display.textContent += num;
+  });
+});
+
+opeartionBtns.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    const operationClicked = event.target.textContent;
+    const displayNum = +display.textContent;
+
+    if (operationClicked == "=") {
+      evaluate(event)
+    } else {
+      if (operation) {
+        evaluate(event)
+      } else {
+        operation = operationClicked;
+        number = displayNum;
+        display.textContent = "";
+      }
+    }
+  });
+});
+
+clearBtn.addEventListener("click", () => {
+  display.textContent = "";
+  number = null;
+  operation = null;
+  numberAnother = null;
+});
+
+eraseBtn.addEventListener("click", () => {
+  display.textContent = display.textContent.slice(
+    0,
+    display.textContent.length - 1
+  );
+});
+
+
+
+function deb(){
+    console.log(number, operation, numberAnother);
+    
+}
