@@ -1,6 +1,6 @@
-Calculator
+# Calculator
 Calculator that was built using JavaScript, HTML and CSS.
 
-⚡ Live Preview ⚡
+⚡ [Live Preview](https://zainds.github.io/JS-Calculator/) ⚡
 
 Responsive on mobile: ✅
