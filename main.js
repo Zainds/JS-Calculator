@@ -47,7 +47,7 @@ function operate(a, operation, b) {
         result = divide(a, b);
         break;
       default:
-        return "Invalid operation"; 
+        return ""; 
     }
   
     // check if result is a number
@@ -69,14 +69,14 @@ function evaluate(event) {
   if (operation) {
     numberAnother = displayNum;
     console.log(number, operation, numberAnother);
-    if (number && operation && numberAnother) {
+    if (number && operation != '=' && numberAnother) {
       display.textContent = operate(number, operation, numberAnother);
       number = +display.textContent;
       operation = null;
       numberAnother = null;
     }
-  } else {
-    operation = operationClicked;
+  } else if (operationClicked != '='){
+    operation = operationClicked 
     number = displayNum;
     display.textContent = "";
   }
