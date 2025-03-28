@@ -42,6 +42,7 @@ button {
   height: 60px;
   font-size: 30px;
   font-weight: 500;
+  color: black;
 }
 .display {
   background-color: #b2b9b7;
