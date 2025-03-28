@@ -26,35 +26,41 @@ function divide(a, b) {
   return a / b;
 }
 function operate(a, operation, b) {
-
-  a = +Number.parseFloat(a).toFixed(5)
-  b = +Number.parseFloat(b).toFixed(5) 
-  let result = 0;
+    
+    a = Number(a);
+    b = Number(b);
   
-  switch (operation) {
-    case "+":
-      result = add(a, b);
-      break;
-
-    case "-":
-      result = substract(a, b);
-      break;
-
-    case "*":
-      result = multiply(a, b);
-      break;
-
-    case "/":
-      if (b == 0) return "wtf";
-      result = divide(a, b);
-      break;
+    let result;
+  
+    switch (operation) {
+      case "+":
+        result = add(a, b);
+        break;
+      case "-":
+        result = substract(a, b);
+        break;
+      case "*":
+        result = multiply(a, b);
+        break;
+      case "/":
+        if (b === 0) return "Cannot divide by zero"; 
+        result = divide(a, b);
+        break;
+      default:
+        return "Invalid operation"; 
+    }
+  
+    // check if result is a number
+    if (typeof result === "number" && !isNaN(result)) {
+      result = result.toFixed(3); 
+      if (result.toString().length >= 11) {
+        return Number(result).toExponential(5); // return exp if number too long
+      }
+      return Number(result); 
+    }
+  
+    return "Error"; 
   }
-  console.log(result, typeof result);
-  
-  result = result.toFixed(3)
-  if(result.toString().length >=11) return result.toExponential(5)
-  return +result
-}
 
 function evaluate(event) {
   const operationClicked = event.target.textContent;
