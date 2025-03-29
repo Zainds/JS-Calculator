@@ -26,41 +26,40 @@ function divide(a, b) {
   return a / b;
 }
 function operate(a, operation, b) {
-    
-    a = Number(a);
-    b = Number(b);
-  
-    let result;
-  
-    switch (operation) {
-      case "+":
-        result = add(a, b);
-        break;
-      case "-":
-        result = substract(a, b);
-        break;
-      case "*":
-        result = multiply(a, b);
-        break;
-      case "/":
-        if (b === 0) return "Cannot divide by zero"; 
-        result = divide(a, b);
-        break;
-      default:
-        return ""; 
-    }
-  
-    // check if result is a number
-    if (typeof result === "number" && !isNaN(result)) {
-      result = result.toFixed(3); 
-      if (result.toString().length >= 11) {
-        return Number(result).toExponential(5); // return exp if number too long
-      }
-      return Number(result); 
-    }
-  
-    return "Error"; 
+  a = Number(a);
+  b = Number(b);
+
+  let result;
+
+  switch (operation) {
+    case "+":
+      result = add(a, b);
+      break;
+    case "-":
+      result = substract(a, b);
+      break;
+    case "*":
+      result = multiply(a, b);
+      break;
+    case "/":
+      if (b === 0) return "Cannot divide by zero";
+      result = divide(a, b);
+      break;
+    default:
+      return "";
   }
+
+  // check if result is a number
+  if (typeof result === "number" && !isNaN(result)) {
+    result = result.toFixed(3);
+    if (result.toString().length >= 11) {
+      return Number(result).toExponential(5); // return exp if number too long
+    }
+    return Number(result);
+  }
+
+  return "Error";
+}
 
 function evaluate(event) {
   const operationClicked = event.target.textContent;
@@ -69,14 +68,14 @@ function evaluate(event) {
   if (operation) {
     numberAnother = displayNum;
     console.log(number, operation, numberAnother);
-    if (number && operation != '=' && numberAnother) {
+    if (number && operation != "=" && numberAnother) {
       display.textContent = operate(number, operation, numberAnother);
       number = +display.textContent;
       operation = null;
       numberAnother = null;
     }
-  } else if (operationClicked != '='){
-    operation = operationClicked 
+  } else if (operationClicked != "=") {
+    operation = operationClicked;
     number = displayNum;
     display.textContent = "";
   }

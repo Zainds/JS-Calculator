@@ -35,7 +35,7 @@ body {
 }
 button {
   padding: 5px;
-  background-color: #217C7E;
+  background-color: #217c7e;
   border-radius: 5px;
   border: 1px solid black;
   width: 60px;
@@ -54,17 +54,18 @@ button {
   padding: 0px 3px;
   padding-bottom: 9px;
 }
-#zero{
-    flex-grow: 1;
+#zero {
+  flex-grow: 1;
 }
-.operation, .calc{
-    background-color: #FF8F1F;
+.operation,
+.calc {
+  background-color: #ff8f1f;
 }
-.action{
-    background-color: dodgerblue;
+.action {
+  background-color: dodgerblue;
 }
 
-.display-container{
+.display-container {
   display: flex;
   align-items: center;
 }
