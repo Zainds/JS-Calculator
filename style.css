@@ -51,8 +51,8 @@ button {
   width: 246px;
   height: 38px;
   text-align: end;
-  padding: 8px 3px;
-  
+  padding: 0px 3px;
+  padding-bottom: 9px;
 }
 #zero{
     flex-grow: 1;
@@ -62,4 +62,9 @@ button {
 }
 .action{
     background-color: dodgerblue;
+}
+
+.display-container{
+  display: flex;
+  align-items: center;
 }

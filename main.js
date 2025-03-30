@@ -84,7 +84,7 @@ function evaluate(event) {
 
 numbersBtns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
-    if (display.textContent.length < 11) {
+    if (display.textContent.length < 9) {
       const num = event.target.textContent;
       display.textContent += num;
     }
