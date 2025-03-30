@@ -27,7 +27,7 @@ body {
   background-color: rgb(0, 0, 0);
   border-radius: 15px;
   width: 270px;
-  height: 380px;
+  height: 385px;
   gap: 15px;
 }
 .buttons {
@@ -51,7 +51,7 @@ button {
   width: 246px;
   height: 38px;
   text-align: end;
-  padding: 2px 3px;
+  padding: 8px 3px;
   
 }
 #zero{
